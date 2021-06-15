@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+defaults:
+  run:
+    working-directory: cpp
+
+jobs:
+  unit-tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        cpp-version: [14, 17, 20]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build unit tests
+      run: make
+      env:
+        CXX_STANDARD: ${{ matrix.cpp-version }}
+    - name: Run unit tests
+      run: make test
