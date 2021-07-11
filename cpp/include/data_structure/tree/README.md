@@ -4,6 +4,7 @@ Trees are a group of data structures that are named this way because of how they
 ### Contents
 
 1. [Fenwick tree](#1-fenwick-tree)
+2. [Binary search tree](#2-binary-search-tree)
 
 ---
 
@@ -34,3 +35,50 @@ _Update_    | _O(log N)_   | _O(N)_
 _Calculate_ | _O(log N)_   | _O(N)_
 
 Where N is the number of elements in the original array.
+
+## 2. Binary search tree
+A binary tree where the value of each node to the right of the current node is larger than or equal to the value of the current node, and the value of the node to the left is less than or equal to the the value of the current node. Storing data using a binary search tree allows a good compromise to be made between insertion speed and search speed.
+
+### Usage
+```c++
+BinarySearchTree tree;
+
+// inserting values into the tree
+tree.insert(1);
+tree.insert(0);
+tree.insert(-1);
+tree.insert(5);
+tree.insert(2);
+tree.insert(3);
+tree.insert(4);
+tree.insert(6);
+
+// to delete an element
+tree.remove(4);
+
+// to search for an element
+tree.search(2)
+
+// for inorder traversal using the recursive method
+// Output will be this array: 
+tree.traversal_inorder_recursive();
+
+// for inorder traversal using the recursive method
+// Output will be this array: 
+tree.traversal_inorder_iterative();
+
+// the rest of the traversals follow the same method
+// replacing inorder with preorder or postorder
+```
+
+### Complexity
+Operation                | Time         | Space
+------------------------ | ------------ |-------------------
+_Insert_                 | _O(log N)_   | _O(1)_
+_Remove_                 | _O(log N)_   | _O(1)_
+_Search_                 | _O(log N)_   | _O(1)_
+_Inorder Traversal_      | _O(N)_       | _O(N)_
+_Preorder Traversal_     | _O(N)_       | _O(N)_
+_Postorder Traversal_    | _O(N)_       | _O(N)_
+
+Where N is the number of elements in the tree.
